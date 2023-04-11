@@ -34,6 +34,27 @@ namespace NugetCustomersAPI_XZX.Services
             return customer;
         }
 
+
+        public async Task<OrderList> GetOrdersListAsync()
+        {
+            WebClient client = new WebClient();
+            client.Headers["content-type"] = "application/json";
+            string url = "https://services.odata.org/V4/Northwind/Northwind.svc/Orders";
+            string dataJson = await client.DownloadStringTaskAsync(url);
+            OrderList orders = JsonConvert.DeserializeObject<OrderList>(dataJson);
+            return orders;
+        }
+
+        public async Task<List<Order>> GetOrdersByCustomer(string id)
+        {
+            OrderList ordersList =
+                await this.GetOrdersListAsync();
+
+            List<Order> ordersCustomer =
+                ordersList.Orders.Where(x => x.IdCustomer == id).ToList();
+            return ordersCustomer;
+        }
+
     }
 
 }

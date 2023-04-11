@@ -39,6 +39,16 @@ namespace PruebaNugetCustomers
             this.txtAddress.Text = customer.Address;
             this.txtCity.Text = customer.City;
 
+            this.listBox2.Items.Clear();
+
+            List<Order> orders = await this.service.GetOrdersByCustomer(idCustomer);
+            foreach (Order order in orders)
+            {
+                this.listBox2.Items.Add(order.ShipName + " | " + order.ShipDate);
+            }
+
         }
+
+       
     }
 }

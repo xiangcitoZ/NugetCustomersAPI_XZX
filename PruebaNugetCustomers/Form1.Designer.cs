@@ -39,6 +39,7 @@
             label4 = new Label();
             txtCity = new TextBox();
             label5 = new Label();
+            listBox2 = new ListBox();
             SuspendLayout();
             // 
             // button1
@@ -134,11 +135,21 @@
             label5.TabIndex = 9;
             label5.Text = "City";
             // 
+            // listBox2
+            // 
+            listBox2.FormattingEnabled = true;
+            listBox2.ItemHeight = 15;
+            listBox2.Location = new Point(536, 105);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(169, 259);
+            listBox2.TabIndex = 11;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(542, 450);
+            ClientSize = new Size(786, 450);
+            Controls.Add(listBox2);
             Controls.Add(txtCity);
             Controls.Add(label5);
             Controls.Add(txtAddress);
@@ -169,5 +180,6 @@
         private Label label4;
         private TextBox txtCity;
         private Label label5;
+        private ListBox listBox2;
     }
 }
